@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
+/* Dark mode berbasis class agar bisa di-toggle manual (next-themes), bukan hanya
+   mengikuti sistem. Tailwind v4 tidak lagi punya opsi darkMode di config. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --surface: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --muted: #475569;
+  --accent: #1d4ed8;
+  --accent-soft: #eff6ff;
+  --primary: #1d4ed8;
+  --primary-foreground: #ffffff;
+}
+
+.dark {
+  --background: #0b1120;
+  --foreground: #e2e8f0;
+  --surface: #111827;
+  --card: #0f172a;
+  --border: #1e293b;
+  --muted: #94a3b8;
+  --accent: #93c5fd;
+  --accent-soft: #172554;
+  --primary: #60a5fa;
+  --primary-foreground: #0b1120;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  /* Offset agar judul section tidak tertutup navbar sticky saat lompat via anchor. */
+  scroll-padding-top: 5rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Fokus keyboard harus selalu terlihat di kedua tema (WCAG 2.4.7). */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Scroll-reveal: default tersembunyi, ditambahkan class .is-visible oleh <Reveal>. */
+.reveal {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

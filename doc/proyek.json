@@ -1,0 +1,57 @@
+[
+  {
+    "nama_proyek": "TIMES Nasional",
+    "url": "https://timesindonesia.co.id/",
+    "tech_stack": "Next.js, Git, PM2, VPS",
+    "dampak_bisnis": "Memodernisasi antarmuka pengguna skala nasional dan meningkatkan performa web (loading speed) secara menyeluruh untuk memberikan pengalaman pembaca yang optimal."
+  },
+  {
+    "nama_proyek": "TIMES Daerah",
+    "url": "https://malang.times.co.id/",
+    "tech_stack": "Next.js, Git, PM2, VPS",
+    "dampak_bisnis": "Mengembangkan antarmuka publik berbasis arsitektur multi-subdomain yang cepat dan responsif untuk mendistribusikan berita spesifik pada setiap jaringan regional."
+  },
+  {
+    "nama_proyek": "API Portal Nasional",
+    "tech_stack": "PHP Slim, REST API, MySQL, Git, VPS",
+    "dampak_bisnis": "Memperbarui, melakukan refactoring, dan mengoptimalkan struktur API yang sudah ada guna meningkatkan kecepatan respons peladen dalam menangani lonjakan traffic pembaca skala nasional."
+  },
+  {
+    "nama_proyek": "API Portal Regional (Daerah)",
+    "tech_stack": "Nest.js, REST API, MySQL, Git, PM2, VPS",
+    "dampak_bisnis": "Merancang arsitektur API terpusat dari nol untuk menangani routing dinamis dan sinkronisasi data lintas subdomain secara akurat pada seluruh ekosistem web daerah."
+  },
+  {
+    "nama_proyek": "Newsroom",
+    "tech_stack": "Laravel, Inertia.js, React, MySQL, Git, VPS",
+    "dampak_bisnis": "Menyatukan dua sistem CMS (daerah dan nasional) untuk mengefisiensi anggaran operasional secara signifikan dan memungkinkan realokasi tim publisher ke tugas yang lebih strategis."
+  },
+  {
+    "nama_proyek": "Reporter",
+    "tech_stack": "Laravel, Inertia.js, React, MySQL, Git, VPS",
+    "dampak_bisnis": "Mempercepat dan menyederhanakan alur kerja redaksional dari tahap penulisan hingga penayangan; memberikan otonomi penuh bagi jurnalis untuk mengirim draf dan memantau status publikasi."
+  },
+  {
+    "nama_proyek": "Kopi Times",
+    "url": "https://kopi.times.co.id/",
+    "tech_stack": "Laravel, Inertia.js, React, Tripay, MySQL, Git, VPS",
+    "dampak_bisnis": "Membuka sumber pendapatan (revenue stream) baru melalui sistem pay-to-publish, memfasilitasi klien eksternal untuk membayar dan mempublikasikan berita secara mandiri menggunakan integrasi pembayaran otomatis Tripay."
+  },
+  {
+    "nama_proyek": "AJP Times",
+    "url": "https://ajp.times.co.id/",
+    "tech_stack": "Laravel, Inertia.js, React, Tripay, MySQL, Git, VPS",
+    "dampak_bisnis": "Menyediakan platform monetisasi terpisah untuk layanan publikasi eksternal, mengotomatisasi alur transaksi, verifikasi pembayaran via Tripay, dan pelaporan penjualan secara real-time."
+  },
+  {
+    "nama_proyek": "TIMES Event",
+    "url": "https://event.times.co.id/",
+    "tech_stack": "Laravel, Inertia.js, React, Tripay, MySQL, Git, VPS",
+    "dampak_bisnis": "Mendigitalisasi operasional pendaftaran dan logistik untuk acara skala besar, terintegrasi dengan Tripay untuk mengotomatisasi transaksi pembayaran tiket atau biaya registrasi secara langsung dan aman."
+  },
+  {
+    "nama_proyek": "Internal Web CDN & AWS Storage",
+    "tech_stack": "Laravel, Inertia.js, React, AWS S3, MySQL, Git, VPS",
+    "dampak_bisnis": "Menyelesaikan masalah tingginya biaya server dengan beralih ke AWS; terbukti mengefisiensi anggaran infrastruktur penyimpanan foto dan media berkapasitas besar menjadi jauh lebih murah dan terukur."
+  }
+]
