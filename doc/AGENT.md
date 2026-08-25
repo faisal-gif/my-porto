@@ -157,6 +157,11 @@ Tidak ada langkah routing tambahan — `generateStaticParams` membaca `LOCALES`.
 4. Kalau perlu muncul di navbar, tambahkan id-nya ke `SECTIONS` di
    `components/navbar.jsx` **dan** ke `nav` di `content.js`.
 
+### Mengganti favicon
+Timpa `app/icon.png`. **Bukan** `public/icon.png` — Next hanya membaca konvensi
+file dari dalam `app/`. Tag `<link rel="icon">` beserta `sizes`, `type`, dan
+hash cache-busting-nya dibuat otomatis; tidak ada yang perlu diubah di kode.
+
 ### Mengganti CV
 Timpa `public/cv/Mochamad-Faisal-Rahman-CV.pdf`, atau ubah `site.cv` bila nama
 filenya berbeda.
