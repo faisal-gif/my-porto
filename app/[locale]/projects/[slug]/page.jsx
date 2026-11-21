@@ -3,8 +3,7 @@ import { notFound } from 'next/navigation'
 import { LOCALES, getDict, isLocale, t } from '@/lib/i18n'
 import { projects, getProject } from '@/data/projects'
 import { site } from '@/data/site'
-import ProjectCard from '@/components/project-card'
-import Reveal from '@/components/reveal'
+import ProjectRow from '@/components/project-row'
 import { ArrowLeft, External } from '@/components/icons'
 
 export function generateStaticParams() {
@@ -52,79 +51,92 @@ export default async function ProjectPage({ params }) {
 
   return (
     <article>
-      <header className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-4xl px-5 py-14 sm:py-20">
+      <header className="border-b border-rule">
+        <div className="mx-auto max-w-6xl px-5 pt-8 pb-12 sm:pb-16">
           <Link
             href={`/${locale}#projects`}
-            className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
+            className="font-narrow inline-flex items-center gap-1.5 text-sm font-bold tracking-wide text-muted uppercase transition-colors hover:text-foreground"
           >
             <ArrowLeft width={15} height={15} />
             {dict.projectDetail.back}
           </Link>
 
-          <span className="mt-6 inline-block rounded-md bg-accent-soft px-2.5 py-1 text-xs font-medium text-accent">
-            {dict.projects.filters[project.category]}
-          </span>
+          <div className="mt-8 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t-[3px] border-rule pt-4 font-mono text-xs font-semibold tracking-wider uppercase">
+            <span className="text-figure">{project.code}</span>
+            <span className="text-muted">{dict.projects.filters[project.category]}</span>
+            <span className="text-gain">
+              <span aria-hidden>▲ </span>
+              {t(project.figure, locale)}
+            </span>
+          </div>
 
-          <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{project.name}</h1>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{t(project.impact, locale)}</p>
+          <h1 className="font-condensed mt-4 text-[clamp(3rem,9vw,6rem)] leading-[0.9] font-black tracking-[-0.02em] text-balance uppercase">
+            {project.name}
+          </h1>
+          <p className="mt-6 max-w-3xl text-xl leading-snug font-medium text-pretty sm:text-2xl">
+            {t(project.impact, locale)}
+          </p>
 
-          <div className="mt-6">
+          <div className="mt-8">
             {project.url ? (
               <a
                 href={project.url}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                className="font-narrow inline-flex h-12 items-center gap-2.5 bg-primary px-6 text-base font-bold tracking-wide text-primary-foreground uppercase transition-opacity hover:opacity-85"
               >
                 {dict.projectDetail.visit}
-                <External width={15} height={15} />
+                <External width={16} height={16} />
               </a>
             ) : (
-              <p className="text-sm text-muted">{dict.projectDetail.internal}</p>
+              <p className="font-mono text-xs tracking-wider text-muted uppercase">{dict.projectDetail.internal}</p>
             )}
           </div>
         </div>
       </header>
 
-      <div className="mx-auto max-w-4xl px-5 py-14 sm:py-16">
-        <section aria-labelledby="stack-title">
-          <h2 id="stack-title" className="text-sm font-semibold tracking-wide text-muted uppercase">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-14 sm:py-20 lg:grid-cols-12">
+        <section aria-labelledby="stack-title" className="self-start border-t-2 border-rule pt-4 lg:col-span-4">
+          <h2 id="stack-title" className="font-narrow text-sm font-bold tracking-wider text-muted uppercase">
             {dict.projectDetail.stack}
           </h2>
-          <ul className="mt-3 flex flex-wrap gap-2">
+          <ul className="mt-2">
             {project.stack.map((tech) => (
-              <li
-                key={tech}
-                className="rounded-md border border-border bg-surface px-2.5 py-1 font-mono text-xs text-muted"
-              >
+              <li key={tech} className="border-b border-border py-2.5 font-mono text-sm font-semibold">
                 {tech}
               </li>
             ))}
           </ul>
         </section>
 
-        <div className="mt-12 space-y-10">
+        <div className="lg:col-span-8">
           {details.map((detail, i) => (
-            <Reveal key={detail.label} as="section" delay={i * 60} aria-labelledby={`d-${i}`}>
-              <h2 id={`d-${i}`} className="text-sm font-semibold tracking-wide text-accent uppercase">
+            <section
+              key={detail.label}
+              aria-labelledby={`d-${i}`}
+              className="grid gap-x-8 gap-y-2 border-t-2 border-rule py-5 sm:grid-cols-[9rem_1fr]"
+            >
+              <h2 id={`d-${i}`} className="font-condensed text-xl font-extrabold uppercase">
                 {detail.label}
               </h2>
-              <p className="mt-2 leading-relaxed text-muted">{detail.value}</p>
-            </Reveal>
+              <p className="max-w-[65ch] leading-relaxed text-pretty text-muted">{detail.value}</p>
+            </section>
           ))}
         </div>
       </div>
 
-      <section aria-labelledby="others-title" className="border-t border-border bg-surface">
+      <section aria-labelledby="others-title" className="bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-14 sm:py-16">
-          <h2 id="others-title" className="text-xl font-bold tracking-tight">
+          <h2
+            id="others-title"
+            className="font-condensed border-t-[3px] border-rule pt-4 text-4xl font-extrabold uppercase"
+          >
             {dict.projectDetail.otherProjects}
           </h2>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-6 border-t-2 border-rule">
             {others.map((other) => (
               <li key={other.slug}>
-                <ProjectCard project={other} locale={locale} dict={dict} />
+                <ProjectRow project={other} locale={locale} dict={dict} />
               </li>
             ))}
           </ul>

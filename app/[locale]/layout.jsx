@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Archivo, JetBrains_Mono } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import '../globals.css'
 
@@ -8,8 +8,10 @@ import ThemeProvider from '@/components/theme-provider'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'], display: 'swap' })
-const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'], display: 'swap' })
+// Archivo variabel dengan sumbu lebar (wdth 62–125): satu keluarga untuk teks
+// biasa sekaligus judul kondensasi. JetBrains Mono hanya untuk kode & angka.
+const archivo = Archivo({ variable: '--font-archivo', subsets: ['latin'], axes: ['wdth'], display: 'swap' })
+const jetbrains = JetBrains_Mono({ variable: '--font-jetbrains', subsets: ['latin'], display: 'swap' })
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }))
@@ -54,20 +56,13 @@ export default async function RootLayout({ children, params }) {
       lang={locale}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${archivo.variable} ${jetbrains.variable} h-full antialiased`}
     >
-      <head>
-        {/* Scroll-reveal disembunyikan lewat CSS lalu dimunculkan JS. Tanpa JS,
-            konten harus tetap terbaca. */}
-        <noscript>
-          <style>{'.reveal{opacity:1!important;transform:none!important}'}</style>
-        </noscript>
-      </head>
       <body className="flex min-h-full flex-col">
         <ThemeProvider>
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
           >
             {dict.nav.skipToContent}
           </a>

@@ -1,55 +1,57 @@
 import Section from '@/components/section'
-import Reveal from '@/components/reveal'
 import { site, socials } from '@/data/site'
-import { socialIcons, Mail, Download, External } from '@/components/icons'
+import { socialIcons, Mail, Download, ArrowRight } from '@/components/icons'
 
 export default function Contact({ dict }) {
   return (
     <Section id="contact" title={dict.contact.title} subtitle={dict.contact.subtitle}>
-      <Reveal>
-        <div className="flex flex-wrap gap-3">
+      <div className="grid gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-7">
           <a
             href={`mailto:${site.email}`}
-            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            className="group block border-y-2 border-rule py-6 transition-colors hover:bg-surface"
           >
-            <Mail width={16} height={16} />
-            {dict.contact.cta}
+            <span className="flex items-center gap-2 font-narrow text-sm font-bold tracking-wider text-muted uppercase">
+              <Mail width={16} height={16} />
+              {dict.contact.cta}
+            </span>
+            <span className="font-condensed mt-2 flex items-center justify-between gap-4 text-[clamp(1.75rem,5vw,3.25rem)] leading-none font-black break-all text-figure">
+              {site.email}
+              <ArrowRight width={32} height={32} className="shrink-0 transition-transform group-hover:translate-x-1" />
+            </span>
           </a>
           <a
             href={site.cv}
             download
-            className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:bg-surface"
+            className="font-narrow mt-6 inline-flex h-12 items-center gap-2.5 bg-primary px-6 text-base font-bold tracking-wide text-primary-foreground uppercase transition-opacity hover:opacity-85"
           >
-            <Download width={16} height={16} />
+            <Download width={18} height={18} />
             {dict.contact.downloadCv}
           </a>
         </div>
-      </Reveal>
 
-      <ul aria-label={dict.contact.channelsLabel} className="mt-8 grid gap-3 sm:grid-cols-2">
-        {socials.map(({ key, label, href, value }, i) => {
-          const Icon = socialIcons[key]
-          const isEmail = key === 'email'
-          return (
-            <Reveal key={key} as="li" delay={i * 60}>
-              <a
-                href={href}
-                {...(isEmail ? {} : { target: '_blank', rel: 'noreferrer noopener' })}
-                className="flex items-center gap-3 rounded-lg border border-border bg-card p-4 transition-colors hover:border-accent"
-              >
-                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent-soft text-accent">
-                  <Icon width={18} height={18} />
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-sm font-medium">{label}</span>
-                  <span className="block truncate text-sm text-muted">{value}</span>
-                </span>
-                {!isEmail && <External width={14} height={14} className="ml-auto shrink-0 text-muted" />}
-              </a>
-            </Reveal>
-          )
-        })}
-      </ul>
+        <ul aria-label={dict.contact.channelsLabel} className="self-start border-t-2 border-rule lg:col-span-5">
+          {socials
+            .filter(({ key }) => key !== 'email')
+            .map(({ key, label, href }) => {
+              const Icon = socialIcons[key]
+              return (
+                <li key={key}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="flex items-center gap-4 border-b border-border py-4 transition-colors hover:bg-surface sm:px-2"
+                  >
+                    <Icon width={20} height={20} className="shrink-0" />
+                    <span className="font-condensed text-2xl font-extrabold uppercase">{label}</span>
+                    <ArrowRight width={18} height={18} className="ml-auto shrink-0 text-muted" />
+                  </a>
+                </li>
+              )
+            })}
+        </ul>
+      </div>
     </Section>
   )
 }

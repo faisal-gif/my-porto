@@ -2,63 +2,62 @@
 
 import { useState } from 'react'
 import { projects, categories } from '@/data/projects'
-import ProjectCard from '@/components/project-card'
-import Reveal from '@/components/reveal'
+import ProjectRow from '@/components/project-row'
+import Section from '@/components/section'
 
 export default function Projects({ locale, dict }) {
   const [active, setActive] = useState('all')
   const shown = active === 'all' ? projects : projects.filter((p) => p.category === active)
+  const count = (shown.length === 1 ? dict.projects.countOne : dict.projects.countOther).replace('{n}', shown.length)
 
   return (
-    <section id="projects" aria-labelledby="projects-title" className="scroll-mt-20 border-b border-border">
-      <div className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
-        <Reveal>
-          <h2 id="projects-title" className="text-2xl font-bold tracking-tight sm:text-3xl">
-            {dict.projects.title}
-          </h2>
-          <p className="mt-2 max-w-2xl text-muted">{dict.projects.subtitle}</p>
-        </Reveal>
-
-        <div
-          role="group"
-          aria-label={dict.projects.filterLabel}
-          className="mt-8 flex flex-wrap items-center gap-2"
-        >
+    <Section id="projects" title={dict.projects.title} subtitle={dict.projects.subtitle}>
+      {/* Tab sektor */}
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div role="group" aria-label={dict.projects.filterLabel} className="flex flex-wrap">
           {categories.map((category) => (
             <button
               key={category}
               type="button"
               aria-pressed={active === category}
               onClick={() => setActive(category)}
-              className={`rounded-md border px-3 py-1.5 text-sm transition-colors ${
-                active === category
-                  ? 'border-primary bg-primary text-primary-foreground'
-                  : 'border-border text-muted hover:bg-surface hover:text-foreground'
+              className={`font-narrow -mr-px -mb-px h-10 border border-rule px-4 text-sm font-bold tracking-wide uppercase transition-colors ${
+                active === category ? 'bg-primary text-primary-foreground' : 'hover:bg-surface'
               }`}
             >
               {dict.projects.filters[category]}
             </button>
           ))}
-          <span aria-live="polite" className="ml-1 text-sm text-muted">
-            {(shown.length === 1 ? dict.projects.countOne : dict.projects.countOther).replace(
-              '{n}',
-              shown.length
-            )}
-          </span>
+        </div>
+        <p aria-live="polite" className="font-mono text-xs tracking-wider text-muted uppercase">
+          {count}
+        </p>
+      </div>
+
+      <div className="mt-6 border-t-2 border-rule">
+        <div
+          aria-hidden
+          className="hidden grid-cols-[5rem_minmax(0,1fr)_7rem_11.5rem_6.5rem] gap-x-6 border-b border-rule px-3 py-2 font-mono text-[11px] font-semibold tracking-wider text-muted uppercase lg:grid"
+        >
+          <span>{dict.projects.columns.code}</span>
+          <span>{dict.projects.columns.name}</span>
+          <span>{dict.projects.columns.sector}</span>
+          <span className="text-right">{dict.projects.columns.figure}</span>
+          <span />
         </div>
 
         {shown.length === 0 ? (
-          <p className="mt-10 text-muted">{dict.projects.empty}</p>
+          <p className="py-10 text-muted">{dict.projects.empty}</p>
         ) : (
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul>
             {shown.map((project) => (
               <li key={project.slug}>
-                <ProjectCard project={project} locale={locale} dict={dict} />
+                <ProjectRow project={project} locale={locale} dict={dict} />
               </li>
             ))}
           </ul>
         )}
       </div>
-    </section>
+    </Section>
   )
 }

@@ -23,15 +23,15 @@ export default async function Image({ params }) {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          background: '#0b1120',
-          color: '#e2e8f0',
+          background: '#0f0d0a',
+          color: '#f3e7d3',
           padding: '80px',
           fontFamily: 'sans-serif',
         }}
       >
-        <div style={{ fontSize: 28, color: '#93c5fd' }}>{site.role[locale] ?? site.role.id}</div>
+        <div style={{ fontSize: 28, color: '#ffb52e' }}>{site.role[locale] ?? site.role.id}</div>
         <div style={{ fontSize: 76, fontWeight: 700, marginTop: 12, lineHeight: 1.1 }}>{site.name}</div>
-        <div style={{ fontSize: 30, color: '#94a3b8', marginTop: 28, maxWidth: 900, lineHeight: 1.4 }}>
+        <div style={{ fontSize: 30, color: '#b8a07c', marginTop: 28, maxWidth: 900, lineHeight: 1.4 }}>
           {dict.hero.tagline}
         </div>
       </div>

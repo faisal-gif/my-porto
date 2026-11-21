@@ -14,7 +14,7 @@ export default function LangToggle({ locale, label, className = '' }) {
       hrefLang={next}
       aria-label={label}
       title={label}
-      className={`inline-flex h-9 items-center justify-center rounded-md border border-border px-2.5 text-xs font-semibold tracking-wide text-muted uppercase transition-colors hover:bg-surface hover:text-foreground ${className}`}
+      className={`inline-flex h-9 items-center justify-center border border-rule px-2.5 font-mono text-xs font-semibold tracking-wide text-foreground uppercase transition-colors hover:bg-surface ${className}`}
     >
       {next}
     </Link>

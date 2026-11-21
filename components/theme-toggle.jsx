@@ -12,7 +12,7 @@ export default function ThemeToggle({ label, className = '' }) {
       aria-label={label}
       title={label}
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-      className={`inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted transition-colors hover:bg-surface hover:text-foreground ${className}`}
+      className={`inline-flex h-9 w-9 items-center justify-center border border-rule text-foreground transition-colors hover:bg-surface ${className}`}
     >
       {/* Kedua ikon dirender; CSS yang memilih. Menghindari mismatch hidrasi
           tanpa perlu state "mounted" dan tanpa kedip ikon saat load. */}

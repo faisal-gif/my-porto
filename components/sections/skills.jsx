@@ -1,28 +1,29 @@
 import Section from '@/components/section'
-import Reveal from '@/components/reveal'
 
+/** Indeks sektor: satu baris per kelompok keahlian, dibaca seperti tabel pasar. */
 export default function Skills({ dict }) {
   return (
     <Section id="skills" title={dict.skills.title} subtitle={dict.skills.subtitle}>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {dict.skills.groups.map((group, i) => (
-          <Reveal
+      <div className="border-t-2 border-rule">
+        {dict.skills.groups.map((group) => (
+          <div
             key={group.name}
-            delay={i * 50}
-            className="rounded-lg border border-border bg-card p-5"
+            className="grid gap-x-8 gap-y-2 border-b border-border py-5 sm:grid-cols-[14rem_1fr] sm:items-baseline"
           >
-            <h3 className="text-sm font-semibold tracking-wide text-muted uppercase">{group.name}</h3>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <li
-                  key={item}
-                  className="rounded-md border border-border bg-surface px-2.5 py-1 text-sm"
-                >
+            <h3 className="font-narrow text-sm font-bold tracking-wider text-muted uppercase">{group.name}</h3>
+            <ul className="flex flex-wrap gap-x-1 gap-y-1 text-lg leading-snug font-semibold sm:text-xl">
+              {group.items.map((item, i) => (
+                <li key={item} className="whitespace-nowrap">
                   {item}
+                  {i < group.items.length - 1 && (
+                    <span aria-hidden className="px-2 font-normal text-border">
+                      /
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
-          </Reveal>
+          </div>
         ))}
       </div>
     </Section>

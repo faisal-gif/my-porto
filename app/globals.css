@@ -1,33 +1,51 @@
 @import "tailwindcss";
 
-/* Dark mode berbasis class agar bisa di-toggle manual (next-themes), bukan hanya
-   mengikuti sistem. Tailwind v4 tidak lagi punya opsi darkMode di config. */
+/* Dark mode berbasis class agar bisa di-toggle manual (next-themes). */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Satu pasar, dua wujud:
+   terang = halaman pasar koran keuangan (kertas salem, tinta hitam),
+   gelap  = papan LED bursa (panel hitam hangat, angka amber). */
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --surface: #f8fafc;
-  --card: #ffffff;
-  --border: #e2e8f0;
-  --muted: #475569;
-  --accent: #1d4ed8;
-  --accent-soft: #eff6ff;
-  --primary: #1d4ed8;
-  --primary-foreground: #ffffff;
+  --background: #f1d4c0;
+  --foreground: #1b1410;
+  --surface: #ebc9b1;
+  --card: #f6e3d5;
+  --border: #c7a088;
+  --rule: #1b1410;
+  --muted: #5a4234;
+  --figure: #1b1410;
+  --gain: #0b5a33;
+  --gain-soft: #cfe0c8;
+  --accent: #0b5a33;
+  --accent-soft: #e4c3ab;
+  --primary: #1b1410;
+  --primary-foreground: #f6e3d5;
+  --tape: #1b1410;
+  --tape-foreground: #f1d4c0;
+  --tape-figure: #f7b733;
+  --selection: #f7b733;
 }
 
 .dark {
-  --background: #0b1120;
-  --foreground: #e2e8f0;
-  --surface: #111827;
-  --card: #0f172a;
-  --border: #1e293b;
-  --muted: #94a3b8;
-  --accent: #93c5fd;
-  --accent-soft: #172554;
-  --primary: #60a5fa;
-  --primary-foreground: #0b1120;
+  --background: #0f0d0a;
+  --foreground: #f3e7d3;
+  --surface: #17130e;
+  --card: #13100c;
+  --border: #3b2f1e;
+  --rule: #6b5434;
+  --muted: #b8a07c;
+  --figure: #ffb52e;
+  --gain: #6fd99a;
+  --gain-soft: #12301f;
+  --accent: #6fd99a;
+  --accent-soft: #241d13;
+  --primary: #ffb52e;
+  --primary-foreground: #0f0d0a;
+  --tape: #ffb52e;
+  --tape-foreground: #0f0d0a;
+  --tape-figure: #0f0d0a;
+  --selection: #6b5434;
 }
 
 @theme inline {
@@ -36,44 +54,102 @@
   --color-surface: var(--surface);
   --color-card: var(--card);
   --color-border: var(--border);
+  --color-rule: var(--rule);
   --color-muted: var(--muted);
+  --color-figure: var(--figure);
+  --color-gain: var(--gain);
+  --color-gain-soft: var(--gain-soft);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-tape: var(--tape);
+  --color-tape-foreground: var(--tape-foreground);
+  --color-tape-figure: var(--tape-figure);
+  --font-sans: var(--font-archivo);
+  --font-mono: var(--font-jetbrains);
 }
 
 html {
   scroll-behavior: smooth;
   /* Offset agar judul section tidak tertutup navbar sticky saat lompat via anchor. */
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 4.5rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--foreground);
+}
+
+/* Huruf kondensasi untuk judul dan nama emiten (sumbu wdth Archivo). */
+.font-condensed {
+  font-stretch: 62%;
+}
+
+.font-narrow {
+  font-stretch: 80%;
+}
+
+/* Angka selalu tabular agar kolom papan sejajar. */
+.figures {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
 }
 
 /* Fokus keyboard harus selalu terlihat di kedua tema (WCAG 2.4.7). */
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 2px;
+  outline: 2px solid var(--foreground);
+  outline-offset: 3px;
 }
 
-/* Scroll-reveal: default tersembunyi, ditambahkan class .is-visible oleh <Reveal>. */
-.reveal {
-  opacity: 0;
-  transform: translateY(1rem);
-  transition: opacity 600ms ease-out, transform 600ms ease-out;
+/* Scrollbar ikut warna papan. */
+html {
+  scrollbar-color: var(--border) var(--background);
 }
 
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
+/* Pembaruan harga: baris kutipan berkedip hijau sekali lalu tenang. */
+@keyframes quote-tick {
+  0% {
+    background-color: var(--gain-soft);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.quote-tick {
+  animation: quote-tick 1400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Pita berjalan: daftar digandakan, digeser setengah lebarnya. */
+@keyframes tape-run {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.tape-track {
+  animation: tape-run 60s linear infinite;
+}
+
+.tape:hover .tape-track,
+.tape:focus-within .tape-track {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -81,18 +157,26 @@ body {
     scroll-behavior: auto;
   }
 
-  .reveal,
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  .quote-tick {
+    animation: none;
+  }
+
+  .tape-track {
+    animation: none;
+  }
+
+  /* Tanpa gerak, pita menjadi daftar yang bisa digulir manual. */
+  .tape {
+    overflow-x: auto;
+  }
+
+  .tape-clone {
+    display: none;
   }
 
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

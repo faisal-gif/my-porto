@@ -1,6 +1,7 @@
 // Sumber data terpusat untuk section Projects & halaman detail proyek.
 // Menambah proyek = tambah satu object di sini, layout tidak perlu disentuh.
 // category: 'frontend' | 'backend' | 'platform'
+// code: kode bursa 4 huruf; figure: angka kunci yang tampil di pita & daftar.
 //
 // name, url, stack, dan impact.id disalin dari doc/proyek.json (sumber resmi).
 // role/challenge/solution/result adalah draf turunan — perlu direview pemilik.
@@ -8,6 +9,8 @@
 export const projects = [
   {
     slug: 'times-nasional',
+    code: 'TNAS',
+    figure: { id: '~90% lebih cepat', en: '~90% faster' },
     name: 'TIMES Nasional',
     url: 'https://timesindonesia.co.id/',
     category: 'frontend',
@@ -29,12 +32,14 @@ export const projects = [
       en: 'Rebuilt the interface on Next.js with reusable components so every news channel stayed consistent, then trimmed asset loading. The app runs on a VPS under PM2 so it stays up under heavy load.',
     },
     result: {
-      id: 'Tampilan modern yang konsisten di seluruh kanal dan peningkatan kecepatan muat yang terasa pada perangkat mobile.',
-      en: 'A modern, consistent look across every channel and a load-speed gain that is noticeable on mobile devices.',
+      id: 'Tampilan modern yang konsisten di seluruh kanal, Core Web Vitals dari failed menjadi passed, dan halaman utama hingga ~90% lebih cepat.',
+      en: 'A modern, consistent look across every channel, Core Web Vitals moved from failed to passed, and key pages became up to ~90% faster.',
     },
   },
   {
     slug: 'times-daerah',
+    code: 'TDAE',
+    figure: { id: 'Multi-subdomain', en: 'Multi-subdomain' },
     name: 'TIMES Daerah',
     url: 'https://malang.times.co.id/',
     category: 'frontend',
@@ -62,6 +67,8 @@ export const projects = [
   },
   {
     slug: 'api-portal-nasional',
+    code: 'APIN',
+    figure: { id: 'Refactor API', en: 'API refactor' },
     name: 'API Portal Nasional',
     url: null,
     category: 'backend',
@@ -89,6 +96,8 @@ export const projects = [
   },
   {
     slug: 'api-portal-regional',
+    code: 'APIR',
+    figure: { id: 'Nest.js dari nol', en: 'Nest.js from scratch' },
     name: 'API Portal Regional (Daerah)',
     url: null,
     category: 'backend',
@@ -116,33 +125,37 @@ export const projects = [
   },
   {
     slug: 'newsroom',
+    code: 'NWSR',
+    figure: { id: '3 → 1 CMS', en: '3 → 1 CMS' },
     name: 'Newsroom',
     url: null,
     category: 'platform',
     stack: ['Laravel', 'Inertia.js', 'React', 'MySQL', 'Git', 'VPS'],
     impact: {
-      id: 'Menyatukan dua sistem CMS (daerah dan nasional) untuk mengefisiensi anggaran operasional secara signifikan dan memungkinkan realokasi tim publisher ke tugas yang lebih strategis.',
-      en: 'Merged two CMS systems (regional and national) into one, cutting operating budget significantly and freeing the publisher team for more strategic work.',
+      id: 'Menyatukan tiga sistem CMS (editor daerah, editor nasional, dan editor konten berbayar) untuk mengefisiensi anggaran operasional secara signifikan dan memungkinkan realokasi tim publisher ke tugas yang lebih strategis.',
+      en: 'Merged three CMS systems (regional editor, national editor, and paid-content editor) into one, cutting operating budget significantly and freeing the publisher team for more strategic work.',
     },
     role: {
       id: 'Full Stack Web Developer — end-to-end, dari model data hingga antarmuka redaksi.',
       en: 'Full Stack Web Developer — end to end, from data model to the editorial interface.',
     },
     challenge: {
-      id: 'Redaksi menjalankan dua CMS berbeda untuk konten daerah dan nasional. Biaya operasional berjalan ganda, dan publisher harus berpindah sistem untuk pekerjaan yang pada dasarnya sama.',
-      en: 'The newsroom ran two different CMSs for regional and national content. Operating costs ran twice over, and publishers had to switch systems for what was essentially the same work.',
+      id: 'Redaksi menjalankan tiga CMS berbeda untuk konten daerah, nasional, dan berbayar. Biaya operasional berjalan berlipat, dan publisher harus berpindah sistem untuk pekerjaan yang pada dasarnya sama.',
+      en: 'The newsroom ran three different CMSs for regional, national, and paid content. Operating costs multiplied, and publishers had to switch systems for what was essentially the same work.',
     },
     solution: {
-      id: 'Merancang satu CMS Laravel + Inertia + React yang menampung kedua alur kerja: peran dan hak akses membedakan cakupan daerah versus nasional, sementara alur penyuntingan, media, dan penjadwalan dipakai bersama.',
-      en: 'Designed a single Laravel + Inertia + React CMS holding both workflows: roles and permissions separate regional from national scope, while editing, media, and scheduling flows are shared.',
+      id: 'Merancang satu CMS Laravel + Inertia + React yang menampung ketiga alur kerja: peran dan hak akses membedakan cakupan daerah, nasional, dan konten berbayar, sementara alur penyuntingan, media, dan penjadwalan dipakai bersama.',
+      en: 'Designed a single Laravel + Inertia + React CMS holding all three workflows: roles and permissions separate regional, national, and paid-content scope, while editing, media, and scheduling flows are shared.',
     },
     result: {
-      id: 'Satu sistem menggantikan dua, anggaran operasional turun signifikan, dan tim publisher dapat direalokasi ke tugas yang lebih strategis.',
-      en: 'One system replaced two, operating budget dropped significantly, and the publisher team was reassigned to more strategic work.',
+      id: 'Satu sistem menggantikan tiga, anggaran operasional turun signifikan, dan tim publisher dapat direalokasi ke tugas yang lebih strategis.',
+      en: 'One system replaced three, operating budget dropped significantly, and the publisher team was reassigned to more strategic work.',
     },
   },
   {
     slug: 'reporter',
+    code: 'RPTR',
+    figure: { id: '~80 jurnalis', en: '~80 journalists' },
     name: 'Reporter',
     url: null,
     category: 'platform',
@@ -164,16 +177,18 @@ export const projects = [
       en: 'Built a journalist-facing workspace with draft editing, media upload, publish submission, and live status on one screen, backed by a role-based approval flow that removed manual steps.',
     },
     result: {
-      id: 'Waktu dari naskah selesai hingga tayang memendek, jurnalis bisa memantau statusnya sendiri, dan editor fokus pada kualitas.',
-      en: 'Time from finished copy to publication shortened, journalists could track status themselves, and editors focused on quality.',
+      id: 'Dipakai ~80 jurnalis: waktu dari naskah selesai hingga tayang memendek, jurnalis bisa memantau statusnya sendiri, dan editor fokus pada kualitas.',
+      en: 'Used by ~80 journalists: time from finished copy to publication shortened, journalists could track status themselves, and editors focused on quality.',
     },
   },
   {
     slug: 'kopi-times',
+    code: 'KOPI',
+    figure: { id: 'Rp 45,67 jt', en: 'IDR 45.67M' },
     name: 'Kopi Times',
     url: 'https://kopi.times.co.id/',
     category: 'platform',
-    stack: ['Laravel', 'Inertia.js', 'React', 'Tripay', 'MySQL', 'Git', 'VPS'],
+    stack: ['Laravel', 'Inertia.js', 'React', 'Tripay', 'Gemini API', 'MySQL', 'Git', 'VPS'],
     impact: {
       id: 'Membuka sumber pendapatan (revenue stream) baru melalui sistem pay-to-publish, memfasilitasi klien eksternal untuk membayar dan mempublikasikan berita secara mandiri menggunakan integrasi pembayaran otomatis Tripay.',
       en: 'Opened a new revenue stream through a pay-to-publish system, letting external clients pay for and publish news on their own via automated Tripay payment integration.',
@@ -191,16 +206,18 @@ export const projects = [
       en: 'Built a pay-to-publish platform wired to the Tripay payment gateway. Clients submit their own copy, payment status arrives via callback and moves the piece straight into the editorial review queue — no manual confirmation.',
     },
     result: {
-      id: 'Aliran pendapatan baru yang berjalan mandiri, dengan jejak transaksi yang dapat diaudit.',
-      en: 'A new revenue stream that runs itself, with an auditable transaction trail.',
+      id: 'Aliran pendapatan baru yang berjalan mandiri (Rp 45,67 juta hingga kini), dengan jejak transaksi yang dapat diaudit dan ringkasan penjualan otomatis dari Google Gemini API.',
+      en: 'A new revenue stream that runs itself (IDR 45.67M to date), with an auditable transaction trail and automated sales summaries from the Google Gemini API.',
     },
   },
   {
     slug: 'ajp-times',
+    code: 'AJPT',
+    figure: { id: 'Rp 45,2 jt', en: 'IDR 45.2M' },
     name: 'AJP Times',
     url: 'https://ajp.times.co.id/',
     category: 'platform',
-    stack: ['Laravel', 'Inertia.js', 'React', 'Tripay', 'MySQL', 'Git', 'VPS'],
+    stack: ['Laravel', 'Inertia.js', 'React', 'Tripay', 'Gemini API', 'MySQL', 'Git', 'VPS'],
     impact: {
       id: 'Menyediakan platform monetisasi terpisah untuk layanan publikasi eksternal, mengotomatisasi alur transaksi, verifikasi pembayaran via Tripay, dan pelaporan penjualan secara real-time.',
       en: 'Provided a separate monetisation platform for external publication services, automating the transaction flow, payment verification via Tripay, and real-time sales reporting.',
@@ -218,12 +235,14 @@ export const projects = [
       en: 'Delivered a self-service ordering flow with automatic Tripay payment verification, plus a dashboard that summarises transactions and revenue straight from the same data.',
     },
     result: {
-      id: 'Rekonsiliasi manual hilang dan manajemen memperoleh laporan penjualan real-time.',
-      en: 'Manual reconciliation disappeared and management gained real-time sales reporting.',
+      id: 'Pendapatan Rp 45,2 juta hingga kini, rekonsiliasi manual hilang, dan manajemen memperoleh laporan penjualan real-time lengkap dengan ringkasan otomatis dari Google Gemini API.',
+      en: 'IDR 45.2M in revenue to date, manual reconciliation disappeared, and management gained real-time sales reporting with automated summaries from the Google Gemini API.',
     },
   },
   {
     slug: 'times-event',
+    code: 'EVNT',
+    figure: { id: 'Tiket via Tripay', en: 'Tripay ticketing' },
     name: 'TIMES Event',
     url: 'https://event.times.co.id/',
     category: 'platform',
@@ -251,6 +270,8 @@ export const projects = [
   },
   {
     slug: 'internal-web-cdn-aws-storage',
+    code: 'ICDN',
+    figure: { id: 'AWS S3', en: 'AWS S3' },
     name: 'Internal Web CDN & AWS Storage',
     url: null,
     category: 'backend',
