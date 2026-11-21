@@ -52,6 +52,12 @@ export const ArrowRight = (props) => (
   </svg>
 )
 
+export const TriangleUp = (props) => (
+  <svg {...solid} viewBox="0 0 12 12" {...props}>
+    <path d="M6 1.5 11 10.5H1z" />
+  </svg>
+)
+
 export const ArrowLeft = (props) => (
   <svg {...stroke} {...props}>
     <path d="M19 12H5M11 18l-6-6 6-6" />

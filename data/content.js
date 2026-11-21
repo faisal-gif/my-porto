@@ -19,7 +19,6 @@ export const content = {
       backToTop: 'Kembali ke atas',
     },
     hero: {
-      greeting: 'Halo, saya',
       tagline:
         'Membangun dan memelihara ekosistem aplikasi web skala besar end-to-end — dari arsitektur yang menekan biaya operasional hingga platform komersial yang membuka aliran pendapatan baru.',
       ctaProjects: 'Lihat Proyek',
@@ -34,6 +33,7 @@ export const content = {
         { code: 'USR', value: '~80', change: 'jurnalis', note: 'Pengguna aktif portal reporter', ref: 'reporter' },
       ],
       tapeLabel: 'Pita produk yang sedang berjalan',
+      session: 'Sesi',
     },
     about: {
       title: 'Tentang Saya',
@@ -43,15 +43,16 @@ export const content = {
         'Saya juga mengintegrasikan AI ke dalam produk, misalnya Google Gemini API untuk ringkasan penjualan otomatis, dan memanfaatkan AI-assisted tools untuk mempercepat debugging, refactoring, dan dokumentasi tanpa mengorbankan kualitas kode.',
       ],
       stats: [
-        { value: '10', label: 'Produk web di produksi' },
-        { value: '2+ thn', label: 'Pengalaman profesional di TIMES Indonesia' },
-        { value: '5', label: 'Situs publik yang bisa dikunjungi' },
-        { value: 'ID · EN', label: 'Bahasa kerja' },
+        { label: 'Produk di produksi', value: '10 produk web' },
+        { label: 'Pengalaman profesional', value: '2+ tahun di TIMES Indonesia' },
+        { label: 'Situs publik', value: '5 situs yang bisa dikunjungi' },
+        { label: 'Bahasa kerja', value: 'Indonesia & Inggris' },
       ],
     },
     skills: {
       title: 'Keahlian',
       subtitle: 'Teknologi yang saya pakai sehari-hari untuk membangun dan memelihara produk.',
+      usedIn: '{n} proyek',
       groups: [
         { name: 'Bahasa Pemrograman', items: ['JavaScript', 'TypeScript', 'PHP', 'SQL', 'HTML/CSS'] },
         {
@@ -71,6 +72,7 @@ export const content = {
       items: [
         {
           company: 'PT Dawai Citra Semesta (TIMES Indonesia)',
+          figure: 'Rp 90,8 jt+',
           role: 'Full Stack Web Developer',
           period: 'Agu 2024 – Sekarang',
           current: true,
@@ -86,6 +88,7 @@ export const content = {
         },
         {
           company: 'Freelance',
+          figure: '2 klien',
           role: 'Full Stack Web Developer',
           period: 'Okt 2022 – Jul 2024',
           current: false,
@@ -97,6 +100,7 @@ export const content = {
         },
         {
           company: 'PT Kinarya Utama Teknik',
+          figure: '2 produk diuji',
           role: 'Internship — Quality Assurance',
           period: 'Agu 2022 – Sep 2022',
           current: false,
@@ -107,6 +111,7 @@ export const content = {
         },
         {
           company: 'BBPPMPV BOE Malang',
+          figure: '1 smart mirror',
           role: 'Internship — IoT Developer',
           period: 'Feb 2022 – Mar 2022',
           current: false,
@@ -162,6 +167,8 @@ export const content = {
       cta: 'Kirim Email',
       downloadCv: 'Unduh CV (PDF)',
       channelsLabel: 'Kanal kontak',
+      slip: { channel: 'Kanal', detail: 'Alamat', action: 'Aksi' },
+      actions: { whatsapp: 'Chat', linkedin: 'Buka profil', github: 'Lihat repo' },
     },
     footer: {
       rights: 'Seluruh hak cipta dilindungi.',
@@ -191,7 +198,6 @@ export const content = {
       backToTop: 'Back to top',
     },
     hero: {
-      greeting: 'Hi, I am',
       tagline:
         'I build and maintain large-scale web ecosystems end to end — from architecture that cuts operating cost to commercial platforms that open new revenue streams.',
       ctaProjects: 'View Projects',
@@ -206,6 +212,7 @@ export const content = {
         { code: 'USR', value: '~80', change: 'journalists', note: 'Active users of the reporter portal', ref: 'reporter' },
       ],
       tapeLabel: 'Ticker of products in production',
+      session: 'Session',
     },
     about: {
       title: 'About Me',
@@ -215,15 +222,16 @@ export const content = {
         'I also build AI into products, such as the Google Gemini API for automated sales summaries, and lean on AI-assisted tools to speed up debugging, refactoring, and documentation without trading away code quality.',
       ],
       stats: [
-        { value: '10', label: 'Web products in production' },
-        { value: '2+ yrs', label: 'Professional experience at TIMES Indonesia' },
-        { value: '5', label: 'Public sites you can visit' },
-        { value: 'ID · EN', label: 'Working languages' },
+        { label: 'In production', value: '10 web products' },
+        { label: 'Professional experience', value: '2+ years at TIMES Indonesia' },
+        { label: 'Public sites', value: '5 sites you can visit' },
+        { label: 'Working languages', value: 'Indonesian & English' },
       ],
     },
     skills: {
       title: 'Skills',
       subtitle: 'The technologies I work with day to day to build and maintain products.',
+      usedIn: '{n} listings',
       groups: [
         { name: 'Languages', items: ['JavaScript', 'TypeScript', 'PHP', 'SQL', 'HTML/CSS'] },
         {
@@ -243,6 +251,7 @@ export const content = {
       items: [
         {
           company: 'PT Dawai Citra Semesta (TIMES Indonesia)',
+          figure: 'IDR 90.8M+',
           role: 'Full Stack Web Developer',
           period: 'Aug 2024 – Present',
           current: true,
@@ -258,6 +267,7 @@ export const content = {
         },
         {
           company: 'Freelance',
+          figure: '2 clients',
           role: 'Full Stack Web Developer',
           period: 'Oct 2022 – Jul 2024',
           current: false,
@@ -269,6 +279,7 @@ export const content = {
         },
         {
           company: 'PT Kinarya Utama Teknik',
+          figure: '2 products tested',
           role: 'Internship — Quality Assurance',
           period: 'Aug 2022 – Sep 2022',
           current: false,
@@ -279,6 +290,7 @@ export const content = {
         },
         {
           company: 'BBPPMPV BOE Malang',
+          figure: '1 smart mirror',
           role: 'Internship — IoT Developer',
           period: 'Feb 2022 – Mar 2022',
           current: false,
@@ -334,6 +346,8 @@ export const content = {
       cta: 'Send an Email',
       downloadCv: 'Download CV (PDF)',
       channelsLabel: 'Contact channels',
+      slip: { channel: 'Channel', detail: 'Address', action: 'Action' },
+      actions: { whatsapp: 'Chat', linkedin: 'Open profile', github: 'View repos' },
     },
     footer: {
       rights: 'All rights reserved.',

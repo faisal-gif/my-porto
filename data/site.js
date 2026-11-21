@@ -20,7 +20,7 @@ export const site = {
 
 export const socials = [
   { key: 'email', label: 'Email', href: `mailto:${site.email}`, value: site.email },
-  { key: 'whatsapp', label: 'WhatsApp', href: site.whatsapp, value: 'WhatsApp' },
-  { key: 'linkedin', label: 'LinkedIn', href: site.linkedin, value: 'LinkedIn' },
-  { key: 'github', label: 'GitHub', href: site.github, value: 'GitHub' },
+  { key: 'whatsapp', label: 'WhatsApp', href: site.whatsapp, value: '+62 895-3891-18844' },
+  { key: 'linkedin', label: 'LinkedIn', href: site.linkedin, value: 'in/faisal-rahman-90ab1b134' },
+  { key: 'github', label: 'GitHub', href: site.github, value: 'github.com/faisal-gif' },
 ]

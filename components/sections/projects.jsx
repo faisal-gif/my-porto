@@ -29,7 +29,7 @@ export default function Projects({ locale, dict }) {
             </button>
           ))}
         </div>
-        <p aria-live="polite" className="font-mono text-xs tracking-wider text-muted uppercase">
+        <p aria-live="polite" className="font-narrow text-xs font-bold tracking-wider text-muted uppercase">
           {count}
         </p>
       </div>
@@ -37,7 +37,7 @@ export default function Projects({ locale, dict }) {
       <div className="mt-6 border-t-2 border-rule">
         <div
           aria-hidden
-          className="hidden grid-cols-[5rem_minmax(0,1fr)_7rem_11.5rem_6.5rem] gap-x-6 border-b border-rule px-3 py-2 font-mono text-[11px] font-semibold tracking-wider text-muted uppercase lg:grid"
+          className="font-narrow hidden grid-cols-[5rem_minmax(0,1fr)_7rem_11.5rem_6.5rem] gap-x-6 border-b border-rule px-3 py-2 text-[11px] font-bold tracking-wider text-muted uppercase lg:grid"
         >
           <span>{dict.projects.columns.code}</span>
           <span>{dict.projects.columns.name}</span>

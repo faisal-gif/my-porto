@@ -8,10 +8,10 @@ export default function Footer({ locale, dict }) {
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="font-condensed text-3xl font-black uppercase">{site.name}</p>
-          <p className="mt-2 font-mono text-xs opacity-80">
+          <p className="mt-2 text-sm">
             © {new Date().getFullYear()} · {dict.footer.rights}
           </p>
-          <p className="mt-1 font-mono text-xs opacity-80">{dict.footer.builtWith}</p>
+          <p className="mt-1 text-sm">{dict.footer.builtWith}</p>
         </div>
 
         <Link

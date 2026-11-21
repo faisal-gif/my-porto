@@ -2,6 +2,7 @@
 // Menambah proyek = tambah satu object di sini, layout tidak perlu disentuh.
 // category: 'frontend' | 'backend' | 'platform'
 // code: kode bursa 4 huruf; figure: angka kunci yang tampil di pita & daftar.
+// gain: true hanya bila figure adalah hasil terukur (tampil dengan tanda naik).
 //
 // name, url, stack, dan impact.id disalin dari doc/proyek.json (sumber resmi).
 // role/challenge/solution/result adalah draf turunan — perlu direview pemilik.
@@ -10,6 +11,7 @@ export const projects = [
   {
     slug: 'times-nasional',
     code: 'TNAS',
+    gain: true,
     figure: { id: '~90% lebih cepat', en: '~90% faster' },
     name: 'TIMES Nasional',
     url: 'https://timesindonesia.co.id/',
@@ -126,6 +128,7 @@ export const projects = [
   {
     slug: 'newsroom',
     code: 'NWSR',
+    gain: true,
     figure: { id: '3 → 1 CMS', en: '3 → 1 CMS' },
     name: 'Newsroom',
     url: null,
@@ -155,6 +158,7 @@ export const projects = [
   {
     slug: 'reporter',
     code: 'RPTR',
+    gain: true,
     figure: { id: '~80 jurnalis', en: '~80 journalists' },
     name: 'Reporter',
     url: null,
@@ -184,6 +188,7 @@ export const projects = [
   {
     slug: 'kopi-times',
     code: 'KOPI',
+    gain: true,
     figure: { id: 'Rp 45,67 jt', en: 'IDR 45.67M' },
     name: 'Kopi Times',
     url: 'https://kopi.times.co.id/',
@@ -213,6 +218,7 @@ export const projects = [
   {
     slug: 'ajp-times',
     code: 'AJPT',
+    gain: true,
     figure: { id: 'Rp 45,2 jt', en: 'IDR 45.2M' },
     name: 'AJP Times',
     url: 'https://ajp.times.co.id/',

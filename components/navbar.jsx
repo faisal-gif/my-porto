@@ -51,10 +51,12 @@ export default function Navbar({ locale, dict }) {
           <a
             href={site.cv}
             download
-            className="font-narrow hidden h-9 items-center gap-2 bg-primary px-3.5 text-sm font-bold tracking-wide text-primary-foreground uppercase transition-opacity hover:opacity-85 sm:inline-flex"
+            aria-label={dict.nav.downloadCv}
+            className="font-narrow inline-flex h-9 items-center gap-2 bg-primary px-3 text-sm font-bold tracking-wide text-primary-foreground uppercase transition-opacity hover:opacity-85 sm:px-3.5"
           >
             <Download width={16} height={16} />
-            {dict.nav.downloadCv}
+            <span aria-hidden className="sm:hidden">CV</span>
+            <span aria-hidden className="hidden sm:inline">{dict.nav.downloadCv}</span>
           </a>
           <button
             type="button"
@@ -83,17 +85,6 @@ export default function Navbar({ locale, dict }) {
                 </Link>
               </li>
             ))}
-            <li className="pt-6 sm:hidden">
-              <a
-                href={site.cv}
-                download
-                onClick={() => setOpen(false)}
-                className="font-narrow inline-flex h-11 items-center gap-2 bg-primary px-4 text-sm font-bold tracking-wide text-primary-foreground uppercase"
-              >
-                <Download width={16} height={16} />
-                {dict.nav.downloadCv}
-              </a>
-            </li>
           </ul>
         </div>
       )}

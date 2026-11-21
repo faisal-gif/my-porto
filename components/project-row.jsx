@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { t } from '@/lib/i18n'
-import { External, ArrowRight } from '@/components/icons'
+import { External, ArrowRight, TriangleUp } from '@/components/icons'
 
 /**
  * Satu listing di tabel proyek. Seluruh baris bisa diklik ke lembar fakta
@@ -28,7 +28,7 @@ export default function ProjectRow({ project, locale, dict, compact = false }) {
         <p className="mt-1.5 line-clamp-2 max-w-[65ch] text-sm leading-relaxed text-pretty text-muted">
           {t(project.impact, locale)}
         </p>
-        <p className="mt-2 font-mono text-[11px] text-muted">{project.stack.join(' · ')}</p>
+        <p className="font-narrow mt-2 text-xs font-semibold tracking-wide text-muted">{project.stack.join(' · ')}</p>
       </div>
 
       {!compact && (
@@ -38,11 +38,11 @@ export default function ProjectRow({ project, locale, dict, compact = false }) {
       )}
 
       <p
-        className={`figures col-start-2 font-mono text-sm font-semibold text-gain ${
+        className={`figures font-narrow col-start-2 text-sm font-bold ${project.gain ? 'text-gain' : 'text-muted'} ${
           compact ? '' : 'lg:col-start-auto lg:pt-2 lg:text-right'
         }`}
       >
-        <span aria-hidden>▲ </span>
+        {project.gain && <TriangleUp width={10} height={10} className="mr-1.5 inline-block" />}
         {t(project.figure, locale)}
       </p>
 
@@ -63,7 +63,7 @@ export default function ProjectRow({ project, locale, dict, compact = false }) {
             <External width={14} height={14} />
           </a>
         ) : (
-          <span className="font-mono text-[10px] tracking-wider text-muted uppercase">{dict.projects.internal}</span>
+          <span className="font-narrow text-[11px] font-semibold tracking-wider text-muted uppercase">{dict.projects.internal}</span>
         )}
       </div>
     </article>

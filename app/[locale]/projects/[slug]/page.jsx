@@ -4,7 +4,7 @@ import { LOCALES, getDict, isLocale, t } from '@/lib/i18n'
 import { projects, getProject } from '@/data/projects'
 import { site } from '@/data/site'
 import ProjectRow from '@/components/project-row'
-import { ArrowLeft, External } from '@/components/icons'
+import { ArrowLeft, External, TriangleUp } from '@/components/icons'
 
 export function generateStaticParams() {
   return LOCALES.flatMap((locale) => projects.map((project) => ({ locale, slug: project.slug })))
@@ -61,18 +61,30 @@ export default async function ProjectPage({ params }) {
             {dict.projectDetail.back}
           </Link>
 
-          <div className="mt-8 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t-[3px] border-rule pt-4 font-mono text-xs font-semibold tracking-wider uppercase">
-            <span className="text-figure">{project.code}</span>
-            <span className="text-muted">{dict.projects.filters[project.category]}</span>
-            <span className="text-gain">
-              <span aria-hidden>▲ </span>
-              {t(project.figure, locale)}
-            </span>
-          </div>
-
-          <h1 className="font-condensed mt-4 text-[clamp(3rem,9vw,6rem)] leading-[0.9] font-black tracking-[-0.02em] text-balance uppercase">
+          <h1 className="font-condensed mt-8 border-t-[3px] border-rule pt-5 text-[clamp(3rem,9vw,6rem)] leading-[0.9] font-black tracking-[-0.02em] text-balance uppercase">
             {project.name}
           </h1>
+
+          {/* Kutipan listing: kode, angka kunci, sektor */}
+          <dl className="mt-6 grid grid-cols-[auto_1fr] items-baseline gap-x-6 border-y border-rule py-4 sm:grid-cols-[auto_1fr_auto]">
+            <dt className="sr-only">{dict.projects.columns.code}</dt>
+            <dd className="font-mono text-sm font-bold tracking-wider">{project.code}</dd>
+            <dt className="sr-only">{dict.projects.columns.figure}</dt>
+            <dd
+              className={
+                project.gain
+                  ? 'figures font-condensed text-[clamp(2.25rem,6vw,4rem)] leading-none font-black text-figure'
+                  : 'font-narrow text-xl font-bold text-muted sm:text-2xl'
+              }
+            >
+              {project.gain && <TriangleUp width={18} height={18} className="mr-3 inline-block align-middle text-gain" />}
+              {t(project.figure, locale)}
+            </dd>
+            <dt className="sr-only">{dict.projects.columns.sector}</dt>
+            <dd className="font-narrow col-span-2 mt-2 text-sm font-bold tracking-wider text-muted uppercase sm:col-span-1 sm:mt-0">
+              {dict.projects.filters[project.category]}
+            </dd>
+          </dl>
           <p className="mt-6 max-w-3xl text-xl leading-snug font-medium text-pretty sm:text-2xl">
             {t(project.impact, locale)}
           </p>
@@ -89,7 +101,7 @@ export default async function ProjectPage({ params }) {
                 <External width={16} height={16} />
               </a>
             ) : (
-              <p className="font-mono text-xs tracking-wider text-muted uppercase">{dict.projectDetail.internal}</p>
+              <p className="font-narrow text-sm font-bold tracking-wider text-muted uppercase">{dict.projectDetail.internal}</p>
             )}
           </div>
         </div>
@@ -102,7 +114,7 @@ export default async function ProjectPage({ params }) {
           </h2>
           <ul className="mt-2">
             {project.stack.map((tech) => (
-              <li key={tech} className="border-b border-border py-2.5 font-mono text-sm font-semibold">
+              <li key={tech} className="border-b border-border py-2.5 font-semibold">
                 {tech}
               </li>
             ))}
