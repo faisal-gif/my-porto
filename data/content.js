@@ -53,6 +53,8 @@ export const content = {
       title: 'Keahlian',
       subtitle: 'Teknologi yang saya pakai sehari-hari untuk membangun dan memelihara produk.',
       usedIn: '{n} proyek',
+      filterBy: 'Tampilkan proyek dengan {tech}',
+      clearFilter: 'Hapus filter {tech}',
       groups: [
         { name: 'Bahasa Pemrograman', items: ['JavaScript', 'TypeScript', 'PHP', 'SQL', 'HTML/CSS'] },
         {
@@ -73,6 +75,7 @@ export const content = {
         {
           company: 'PT Dawai Citra Semesta (TIMES Indonesia)',
           figure: 'Rp 90,8 jt+',
+          figureNote: 'pendapatan baru',
           role: 'Full Stack Web Developer',
           period: 'Agu 2024 – Sekarang',
           current: true,
@@ -88,7 +91,8 @@ export const content = {
         },
         {
           company: 'Freelance',
-          figure: '2 klien',
+          figure: '2',
+          figureNote: 'klien website',
           role: 'Full Stack Web Developer',
           period: 'Okt 2022 – Jul 2024',
           current: false,
@@ -100,7 +104,8 @@ export const content = {
         },
         {
           company: 'PT Kinarya Utama Teknik',
-          figure: '2 produk diuji',
+          figure: '2',
+          figureNote: 'produk diuji',
           role: 'Internship — Quality Assurance',
           period: 'Agu 2022 – Sep 2022',
           current: false,
@@ -111,7 +116,8 @@ export const content = {
         },
         {
           company: 'BBPPMPV BOE Malang',
-          figure: '1 smart mirror',
+          figure: '1',
+          figureNote: 'smart mirror',
           role: 'Internship — IoT Developer',
           period: 'Feb 2022 – Mar 2022',
           current: false,
@@ -232,6 +238,8 @@ export const content = {
       title: 'Skills',
       subtitle: 'The technologies I work with day to day to build and maintain products.',
       usedIn: '{n} listings',
+      filterBy: 'Show listings using {tech}',
+      clearFilter: 'Clear {tech} filter',
       groups: [
         { name: 'Languages', items: ['JavaScript', 'TypeScript', 'PHP', 'SQL', 'HTML/CSS'] },
         {
@@ -252,6 +260,7 @@ export const content = {
         {
           company: 'PT Dawai Citra Semesta (TIMES Indonesia)',
           figure: 'IDR 90.8M+',
+          figureNote: 'new revenue',
           role: 'Full Stack Web Developer',
           period: 'Aug 2024 – Present',
           current: true,
@@ -267,7 +276,8 @@ export const content = {
         },
         {
           company: 'Freelance',
-          figure: '2 clients',
+          figure: '2',
+          figureNote: 'client websites',
           role: 'Full Stack Web Developer',
           period: 'Oct 2022 – Jul 2024',
           current: false,
@@ -279,7 +289,8 @@ export const content = {
         },
         {
           company: 'PT Kinarya Utama Teknik',
-          figure: '2 products tested',
+          figure: '2',
+          figureNote: 'products tested',
           role: 'Internship — Quality Assurance',
           period: 'Aug 2022 – Sep 2022',
           current: false,
@@ -290,7 +301,8 @@ export const content = {
         },
         {
           company: 'BBPPMPV BOE Malang',
-          figure: '1 smart mirror',
+          figure: '1',
+          figureNote: 'smart mirror',
           role: 'Internship — IoT Developer',
           period: 'Feb 2022 – Mar 2022',
           current: false,

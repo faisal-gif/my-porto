@@ -1,13 +1,28 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useSyncExternalStore } from 'react'
 import { projects, categories } from '@/data/projects'
+import { norm } from '@/lib/stack'
 import ProjectRow from '@/components/project-row'
 import Section from '@/components/section'
+import { Close } from '@/components/icons'
+
+// Filter teknologi datang dari indeks Keahlian lewat ?tech=… (navigasi penuh).
+const subscribe = (cb) => {
+  window.addEventListener('popstate', cb)
+  return () => window.removeEventListener('popstate', cb)
+}
+const readTech = () => new URLSearchParams(window.location.search).get('tech') ?? ''
 
 export default function Projects({ locale, dict }) {
   const [active, setActive] = useState('all')
-  const shown = active === 'all' ? projects : projects.filter((p) => p.category === active)
+  const tech = useSyncExternalStore(subscribe, readTech, () => '')
+  const techLabel = tech && projects.flatMap((p) => p.stack).find((s) => norm(s) === tech)
+
+  const shown = projects.filter(
+    (p) =>
+      (active === 'all' || p.category === active) && (!techLabel || p.stack.some((s) => norm(s) === tech))
+  )
   const count = (shown.length === 1 ? dict.projects.countOne : dict.projects.countOther).replace('{n}', shown.length)
 
   return (
@@ -29,9 +44,21 @@ export default function Projects({ locale, dict }) {
             </button>
           ))}
         </div>
-        <p aria-live="polite" className="font-narrow text-xs font-bold tracking-wider text-muted uppercase">
-          {count}
-        </p>
+        <div className="flex items-center gap-4">
+          {techLabel && (
+            <a
+              href={`/${locale}#projects`}
+              aria-label={dict.skills.clearFilter.replace('{tech}', techLabel)}
+              className="font-narrow inline-flex h-8 items-center gap-2 bg-gain px-3 text-xs font-bold tracking-wider text-background uppercase transition-opacity hover:opacity-85"
+            >
+              {techLabel}
+              <Close width={13} height={13} />
+            </a>
+          )}
+          <p aria-live="polite" className="font-narrow text-xs font-bold tracking-wider text-muted uppercase">
+            {count}
+          </p>
+        </div>
       </div>
 
       <div className="mt-6 border-t-2 border-rule">

@@ -8,10 +8,10 @@ export default function Experience({ dict }) {
         {dict.experience.items.map((job) => (
           <li
             key={job.company}
-            className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-3 border-b border-border py-7 lg:grid-cols-[10rem_minmax(0,1fr)_11rem]"
+            className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-3 border-b border-border py-7 lg:grid-cols-[13rem_minmax(0,1fr)_11rem]"
           >
             <p
-              className={`col-span-2 flex items-start gap-2 font-mono text-xs leading-relaxed font-semibold tracking-wider uppercase lg:col-span-1 ${
+              className={`col-start-1 row-start-1 flex items-start gap-2 font-mono text-xs leading-relaxed font-semibold tracking-wider whitespace-nowrap uppercase lg:col-start-1 lg:row-start-1 ${
                 job.current ? 'text-gain' : 'text-muted'
               }`}
             >
@@ -19,7 +19,7 @@ export default function Experience({ dict }) {
               {job.period}
             </p>
 
-            <div className="min-w-0">
+            <div className="col-span-2 row-start-2 min-w-0 lg:col-span-1 lg:col-start-2 lg:row-start-1">
               <h3 className="font-condensed text-2xl leading-tight font-extrabold uppercase sm:text-3xl">{job.role}</h3>
               <p className="mt-1 font-semibold text-pretty">{job.company}</p>
               <ul className="mt-4 space-y-2.5">
@@ -32,8 +32,13 @@ export default function Experience({ dict }) {
               </ul>
             </div>
 
-            <p className="figures font-condensed row-start-2 text-right text-2xl leading-none font-black text-figure sm:text-3xl lg:row-start-auto">
-              {job.figure}
+            <p className="col-start-2 row-start-1 text-right lg:col-start-3">
+              <span className="figures font-condensed block text-2xl leading-none font-black text-figure sm:text-3xl">
+                {job.figure}
+              </span>
+              <span className="font-narrow mt-1 block text-xs font-bold tracking-wider text-muted uppercase">
+                {job.figureNote}
+              </span>
             </p>
           </li>
         ))}

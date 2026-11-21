@@ -43,7 +43,7 @@ export default async function HomePage({ params }) {
       />
       <Hero locale={locale} dict={dict} />
       <About dict={dict} />
-      <Skills dict={dict} />
+      <Skills locale={locale} dict={dict} />
       <Experience dict={dict} />
       <Projects locale={locale} dict={dict} />
       <Education dict={dict} />
